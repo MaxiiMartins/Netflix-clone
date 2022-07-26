@@ -1,8 +1,8 @@
-$bg: rgb(16,16,16);
+@use "../../variables";
 
 .header {
     height: 100px;
-    background-color: $bg;
+    background-color: variables.$bg;
     display: flex;
     align-items: center;
     padding: 1.5rem;
@@ -14,15 +14,19 @@ $bg: rgb(16,16,16);
     }
     > div{
         width: 100%;
-        margin-left: 3vmax;
+        margin-left: 4vmax;
         a{
             margin: 2vmax;
-            font-size: 1.2rem;
-            font-weight: 300;
+            font-size: 1.3rem;
+            font-weight: 400;
+            transition: 0.5s;
+        }
+        a:hover{
+            color: variables.$font-color-hover;
         }
     }
     > svg {
-        color:whitesmoke;
+        color:variables.$font-color;
         font-size: 2rem;
         cursor: pointer;
     }
