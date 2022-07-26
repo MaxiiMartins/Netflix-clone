@@ -13,6 +13,7 @@ function Header() {
       <Link to="/recent">Añadidos Recientemente</Link>
       <Link to="/mylist">Mi lista</Link>
     </div>
+    {/* Va por el minuto 22:53 del vidio */}
     <ImSearch/>
   </nav>;
 }
