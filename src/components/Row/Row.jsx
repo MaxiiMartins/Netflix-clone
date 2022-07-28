@@ -9,7 +9,8 @@ function Row({ title, arr = [] }) {
     <div className="row-card">
       <h2>{title}</h2>
       <div>
-        {arr.filter(item=> item.poster_path || item.backdrop_path).map((items,index)=><Card key={index} imgUrl={`${URL_IMG}${items.poster_path || items.backdrop_path}`}/>)}
+        {arr.filter(item=> item.poster_path || item.backdrop_path).map((items,index)=>(<Card key={index} id={items.id} imgUrl={`${URL_IMG}${items.poster_path || items.backdrop_path}`}/>))}
+        {/* {arr.filter(item=> item.poster_path || item.backdrop_path).map((items,index)=>(<Link to={`/detalle/${items.id}`}><Card key={index} imgUrl={`${URL_IMG}${items.poster_path || items.backdrop_path}`}/></Link>))} */}
       </div>
     </div>
   );
