@@ -3,15 +3,16 @@
 .row-card{
     background-color: variables.$bg;
     > h2{
-        font-weight: 300;
-        color: variables.$font-color;
+        font-weight: 600;
+        color: variables.$font-color-hover;
         padding: 1rem;
     }
     > div {
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
         overflow-x: auto;
-        padding: 1rem;
+        padding: 0.5rem;
     }
 }
 
