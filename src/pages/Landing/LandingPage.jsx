@@ -6,7 +6,7 @@ function LandingPage() {
   return (
     <div>
         Bienvenido!!!
-        <Link to="/page/">Ingresarrrrrrrrrrr</Link>
+        <Link to="/page/home">Ingresarrrrrrrrrrr</Link>
     </div>
   )
 }
