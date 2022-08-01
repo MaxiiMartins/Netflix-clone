@@ -11,11 +11,26 @@
         display: flex;
         justify-content: space-between;
         overflow: hidden;
-        overflow-x: auto;
+        overflow-x:visible;
         padding: 0.5rem;
+        scroll-snap-type: x mandatory;
+        &::-webkit-scrollbar{
+            height: 0.7rem;
+        }
+        
+        // &::-webkit-scrollbar-track{
+        //     border: 5px solid #2c3528;
+        // }
+        &::-webkit-scrollbar-thumb{
+            background: rgb(170, 20, 25);
+            border-radius: 30px;
+            transition: 0.5s;
+            width: 1rem;
+            &::-webkit-scrollbar-thumb:hover{
+                cursor: pointer;
+            }
+        }
+        
     }
 }
 
-.row-container{
-    margin-left: 1rem;
-}
