@@ -1,0 +1,43 @@
+@use "../../variables";
+
+
+.banner{
+    height: 30rem;
+    background-color: variables.$bg;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+    overflow:hidden;
+    box-sizing: border-box;
+    
+    h1,p{
+        color: variables.$font-color-hover;
+        font-size: 3rem;
+        font-weight: 500;
+        width: 40%;
+        letter-spacing: 1px;
+        z-index: -1;
+    }
+    p{
+        font-size: 1rem;
+        letter-spacing: 2px;
+        word-spacing: 3px;
+        font-weight: 300;
+    }
+}
+.slider-img{
+        height: auto;
+        z-index: 3;
+}
+
+.fade-buttom{
+    position: absolute;
+    top: "30vh";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(180deg,transparent,rgba(37,37,37,0.61),#111);
+}
