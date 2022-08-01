@@ -2,7 +2,6 @@ import React from "react";
 import "./Header.scss"
 import logo from "../../assets/logo.webp"
 import { Link ,Outlet} from "react-router-dom";
-import {ImSearch} from "react-icons/im"
 
 function Header() {
   return <><nav className="header">
@@ -15,7 +14,6 @@ function Header() {
       <Link to="/page/mylist">Mi lista</Link>
     </div>
     {/* Va por el minuto 22:53 del vidio */}
-    <ImSearch/>
   </nav>
   <Outlet/>
   </>;
