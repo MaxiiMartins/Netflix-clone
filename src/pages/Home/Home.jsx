@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Row from "../../components/Row/Row";
 import "./Home.scss";
+import Modal from "../../components/Modal/Modal";
+import CardModal from "../../components/CardModal/CardModal";
+import { getPeliculas } from "../../redux/store/slices/Peliculas";
+import { useDispatch } from "react-redux";
+
 
 const URL_MOVIE = "https://api.themoviedb.org/3/movie/";
 const URL_ALL_GENRE = "https://api.themoviedb.org/3/genre/";
@@ -16,8 +21,11 @@ function Home() {
   const [popular, setPopular] = useState([]);
   const [series, setSeries] = useState([]);
   const [lista, setLista] = useState([]);
+  const [modalActive,setModalActive] = useState(false)
+  const cambiarEstado = ()=> setModalActive(!modalActive)
   const [urlBanner,setUrlBanner] = useState("");
-  
+  const [mostrar,setMostrar] = useState({});
+  const dispatch = useDispatch()
   const [aleatorio,setAleatorio] = useState(Math.ceil(Math.random()*(5-1)))
   useEffect(() => {
     const fetchGeneral = async () => {
@@ -93,11 +101,15 @@ function Home() {
       url += popular[aleatorio].backdrop_path||popular[aleatorio].poster_path
       setUrlBanner(url)
     }
+    dispatch(getPeliculas())
   }, [popular]);
 
   //`https://image.tmdb.org/t/p/original/${popular[0].poster_path}`
   return (
     <section className="home">
+      <Modal estado={modalActive} cambiar={cambiarEstado} >
+        <CardModal cambiar={cambiarEstado} informacion={mostrar} />
+      </Modal>
       <div
         className="banner"
         style={{
@@ -106,16 +118,16 @@ function Home() {
             : "rgb(16, 16, 16)"
         }}
       >
-        {popular[aleatorio] && <h1>{popular[aleatorio].original_title}</h1>}
-        {popular[aleatorio] && <p>{popular[aleatorio].overview}</p>}
+        {popular[aleatorio] && <h1>{popular[aleatorio].title}</h1>}
+        {popular[aleatorio] && <p>{popular[aleatorio].overview.length > 570?popular[aleatorio].overview.substring(0,550)+"....":popular[aleatorio].overview}</p>}
       </div>
       {moviesNow.length && movies.length && popular.length&&genres.length ? (
         <>
-          <Row title={"Popular en PELISFLIX"} arr={popular} />
-          {lista.length?<Row title={"Mis Favoritos"} arr={lista}/>:null}
-          <Row title={"Nuevas en PELISFLIX"} arr={moviesNow} />
-          <Row title={"Peliculas"} arr={movies} />
-          <Row title={"Series"} arr={series} />
+          <Row title={"Populares"} arr={popular} cargar={setMostrar} cambiar={cambiarEstado}/>
+          {lista.length?<Row title={"Mis Favoritos"} arr={lista} cargar={setMostrar} cambiar={cambiarEstado}/>:null}
+          <Row title={"Mas Recientes"} arr={moviesNow} cargar={setMostrar} cambiar={cambiarEstado}/>
+          <Row title={"Series"} arr={series} cargar={setMostrar} cambiar={cambiarEstado}/>
+          <Row title={"Peliculas"} arr={movies} cargar={setMostrar} cambiar={cambiarEstado}/>
           <div className="genreBox">
             {genres.map((item,index)=>{
                 return<Link key={index} to={`/genre/${item.id}`} >{item.name}</Link>
