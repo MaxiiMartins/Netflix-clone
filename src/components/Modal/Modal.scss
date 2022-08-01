@@ -1,0 +1,20 @@
+.modal-overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 99;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* From https://css.glass */
+background: rgba(0, 0, 0, 0.2);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
+
+// esto no va a ir+
+
